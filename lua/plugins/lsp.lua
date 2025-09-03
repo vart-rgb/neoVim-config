@@ -1,14 +1,25 @@
 return {
-  { "williamboman/mason.nvim", config = true },
-  { "williamboman/mason-lspconfig.nvim" },
   {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      local servers = { "lua_ls", "pyright", "phpactor", "ts_ls", "cssls", "html" }
+
+      -- Lista de servidores
+      local servers = {
+        "lua_ls",
+        "pyright",
+        "phpactor",
+        "ts_ls", -- ajustei o nome correto, era "tsserver"
+        "cssls",
+        "html",
+        "tailwindcss", -- 👈 acrescentei o Tailwind
+      }
+
       for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {}
+        lspconfig[lsp].setup({})
       end
-    end
+    end,
   },
+  { "williamboman/mason.nvim",          config = true },
+  { "williamboman/mason-lspconfig.nvim" },
 }
