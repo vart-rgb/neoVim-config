@@ -4,14 +4,14 @@ return {
     dependencies = {
       "roobert/tailwindcss-colorizer-cmp.nvim",
       "norcalli/nvim-colorizer.lua", -- 👈 preview inline das cores
-    }
+    },
   },
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-path" },
   {
     "L3MON4D3/LuaSnip",
-    dependencies = { "rafamadriz/friendly-snippets" }
+    dependencies = { "rafamadriz/friendly-snippets" },
   },
   {
     "saadparwaiz1/cmp_luasnip",
@@ -28,7 +28,7 @@ return {
 
       -- Inline preview de cores no código
       require("colorizer").setup({
-        "*", -- ativa em todos os arquivos
+        "*",              -- ativa em todos os arquivos
         css = { css = true }, -- suporte extra
         html = { names = true },
       })

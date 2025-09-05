@@ -3,6 +3,7 @@ return {
   "folke/noice.nvim",
   event = "VeryLazy",
   opts = {
+    override_vim_notify = false,
     lsp = {
       progress = { enabled = true },
       hover = { enabled = true },

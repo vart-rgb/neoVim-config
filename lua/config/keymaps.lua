@@ -31,5 +31,12 @@ map("n", "gi", vim.lsp.buf.implementation, opts)
 map("n", "<leader>rn", vim.lsp.buf.rename, opts)
 map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
+-- Mapeamento para fechar todos os buffers exceto o atual
+map("n", "<leader>bc", "<Cmd>BufferlineCloseOthers<CR>", { desc = "Fechar outros buffers" })
+map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
+map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
+
+
+
 -- Insert mode escape
 map("i", "jk", "<Esc>", opts)
