@@ -59,10 +59,11 @@ return {
 		event = "InsertEnter",
 		config = function()
 			require("nvim-autopairs").setup()
-		end,
-	},
+    end,
+  }, 
 
-	-- Trouble: painel de diagnostics/LSP
+
+-- Trouble: painel de diagnostics/LSP
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -74,7 +75,7 @@ return {
 
 			-- Keymaps Trouble
 			local keymap = vim.keymap.set
-			keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
+			keymap("n", "<leader>cf", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
 			keymap(
 				"n",
 				"<leader>xw",

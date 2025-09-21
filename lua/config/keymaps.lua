@@ -33,10 +33,12 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
 -- Mapeamento para fechar todos os buffers exceto o atual
 map("n", "<leader>bc", "<Cmd>BufferlineCloseOthers<CR>", { desc = "Fechar outros buffers" })
-map('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
-map('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
+map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {})
+map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {})
 
-
+-- Adicione estas linhas ao seu arquivo de configuração
+vim.keymap.set("n", "<leader>t", ":split term<CR>", { noremap = true, silent = true, desc = "Abrir terminal" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, desc = "Sair do modo terminal" })
 
 -- Insert mode escape
 map("i", "jk", "<Esc>", opts)

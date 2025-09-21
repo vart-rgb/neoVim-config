@@ -9,10 +9,11 @@ return {
         "lua_ls",
         "pyright",
         "phpactor",
-        "ts_ls", -- ajustei o nome correto, era "tsserver"
+        "ts_ls", 
         "cssls",
         "html",
-        "tailwindcss", -- 👈 acrescentei o Tailwind
+        "tailwindcss",
+        "cssls",
       }
 
       for _, lsp in ipairs(servers) do
@@ -20,6 +21,6 @@ return {
       end
     end,
   },
-  { "williamboman/mason.nvim",          config = true },
+  { "williamboman/mason.nvim", config = true },
   { "williamboman/mason-lspconfig.nvim" },
 }
