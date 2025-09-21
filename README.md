@@ -1,7 +1,7 @@
 # 🌌 Minhas Configurações do NeoVim
 
 Este repositório guarda a minha config pessoal do **NeoVim**.
-Com todos os plugins e ferramentas que eu acho interessantes, caso esteja a faltar algo na tua comfig, basta adicionar(eu acho...)
+Com todos os plugins e ferramentas que eu acho interessantes, caso esteja a faltar algo na tua config, basta adicionar(eu acho...)
 Está config foi inteiramente feita no termux, então no teu dispositivo (seja ele pc ou mobile) você precisará fazer mudanças.
 
 ## 📦 Estrutura
