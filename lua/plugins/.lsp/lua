@@ -1,0 +1,69 @@
+{
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- Gestão de Servidores
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+
+      -- Integração com CMP (Necessário para obter as capabilities)
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function()
+      local mason = require("mason")
+      local mason_lspconfig = require("mason-lspconfig")
+      local lspconfig = require("lspconfig")
+      -- Obtém as capabilities do nvim-cmp para garantir a comunicação
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- Inicializa Mason
+      mason.setup()
+
+      -- Lista dos servidores (CORRIGIDO: "tsserver" no lugar de "ts_ls")
+      local servers = {
+        "lua_ls",
+        "pyright",
+        "phpactor",
+        "ts_ls", -- Nome CORRETO para TypeScript no Mason/LSPconfig
+        "cssls",
+        "html",
+        "tailwindcss",
+        "bashls",
+        "jsonls", -- Adicionado, geralmente útil
+      }
+
+      -- Handler que configura TODOS os LSPs instalados
+      mason_lspconfig.setup_handlers({
+        -- 1. Handler Padrão: Aplica as capabilities do CMP a todos os servidores
+        function(server_name)
+          lspconfig[server_name].setup({
+            capabilities = capabilities,
+            -- A maioria dos LSPs funcionará bem apenas com as capabilities
+          })
+        end,
+
+        -- 2. Handler Específico para 'lua_ls' (Recomendado para evitar warnings)
+        ["lua_ls"] = function()
+            lspconfig["lua_ls"].setup({
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        runtime = { version = 'LuaJIT' },
+                        workspace = {
+                            -- Adiciona o runtime e a estrutura de diretórios do Neovim
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                        telemetry = { enable = false },
+                    },
+                },
+            })
+        end,
+        
+        -- Adicione outros handlers específicos aqui se necessário (ex: pyright)
+        -- Ex: ["pyright"] = function() ... end,
+      })
+    end,
+  },
+}
+

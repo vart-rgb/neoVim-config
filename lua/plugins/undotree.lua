@@ -1,23 +1,19 @@
+-- lua/plugins/undotree.lua
 return {
   "mbbill/undotree",
-  keys = {
-    -- Abrir / fechar a Undotree
-    { "<F5>", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undotree" },
-
-    -- Guardar mudanças persistentes
-    { "<leader>us", function()
-        vim.opt.undofile = true
-        vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
-        vim.fn.mkdir(vim.opt.undodir:get(), "p")
-        vim.notify("Undo persistente ativado! ✔️", vim.log.levels.INFO)
-      end,
-      desc = "Ativar undo persistente"
-    },
-  },
   config = function()
-    -- Ativar histórico persistente por padrão
+    local undodir = vim.fn.getcwd() .. "/.undodir"
+
+    -- cria o diretório caso não exista
+    if vim.fn.isdirectory(undodir) == 0 then
+      vim.fn.mkdir(undodir, "p")
+    end
+
+    -- ativa undo persistente
     vim.opt.undofile = true
-    vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
-    vim.fn.mkdir(vim.opt.undodir:get(), "p")
+    vim.opt.undodir = undodir
+
+    -- keymap pra abrir/fechar undotree
+    vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
   end,
 }
