@@ -30,7 +30,7 @@ map("n", "K", vim.lsp.buf.hover, opts)
 map("n", "gi", vim.lsp.buf.implementation, opts)
 map("n", "<leader>rn", vim.lsp.buf.rename, opts)
 map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-
+map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Fechar todos os buffers, exceto o atual" })
 -- Mapeamento para fechar todos os buffers exceto o atual
 map("n", "<leader>bc", "<Cmd>BufferlineCloseOthers<CR>", { desc = "Fechar outros buffers" })
 map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {})
