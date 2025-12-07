@@ -9,7 +9,7 @@ return {
       },
     },
     notification = {
-      override_vim_notify = true, -- substitui :echo com popup mais bonito
+      override_vim_notify = false, -- substitui :echo com popup mais bonito
       window = {
         winblend = 2,          -- transparência
       },
